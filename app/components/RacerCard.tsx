@@ -28,7 +28,7 @@ export const RacerCard: React.FC<RacerCardProps> = ({ racer, profile }) => {
               <h2 className="text-sm lg:text-base font-semibold truncate">{racer.name}</h2>
               {racer.handle && (
                 <Chip
-                  className="px-2"
+                  className="px-2 text-foreground"
                   startContent={<FaXTwitter size={12} />}
                   variant="light"
                   size="sm"
