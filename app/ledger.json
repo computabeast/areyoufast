@@ -1,0 +1,24 @@
+[
+    {
+      "raceId": "race1",
+      "date": "2024-09-02",
+      "results": [
+        {
+          "racerId": "1",
+          "position": 1
+        },
+        {
+          "racerId": "2",
+          "position": 3
+        },
+        {
+          "racerId": "3",
+          "position": 4
+        },
+        {
+          "racerId": "4",
+          "position": 2
+        }
+      ]
+    }
+  ]

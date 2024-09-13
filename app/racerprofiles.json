@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "profilePicture": "https://s3media.247sports.com/Uploads/Assets/649/228/5228649.jpg",
+    "company": "Stealth Startup",
+    "university": "Yale",
+    "age": 24,
+    "linkedInURL": "https://www.linkedin.com/in/seun-omonije-99b07318b/"
+  },
+  {
+    "id": "2",
+    "profilePicture": "https://macventurecapital.com/wp-content/uploads/2021/06/Headshot-.png",
+    "company": "MAC Venture Capital",
+    "university": "James Madison University",
+    "age": 25,
+    "linkedInURL": "https://www.linkedin.com/in/dela-adedze-60b839169/"
+  },
+  {
+    "id": "3",
+    "profilePicture": "https://www.hmc.edu/about/wp-content/uploads/sites/2/2018/11/Asabor.jpg",
+    "company": "OpenAI",
+    "university": "Harvey Mudd",
+    "age": 24,
+    "linkedInURL": "https://www.linkedin.com/in/rex-asabor/"
+  },
+  {
+    "id": "4",
+    "profilePicture": null,
+    "company": null,
+    "university": null,
+    "age": null,
+    "linkedInURL": null
+  }
+]
