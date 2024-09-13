@@ -48,7 +48,7 @@ export default function Home() {
         <div className="flex flex-col">
           <h1 className="text-3xl font-bold text-left">areyoufast.io</h1>
           <p className="text-base font-bold text-left">Who{"'"}s actually fast in SF?</p>
-          <p className="lg:hidden text-xs">There's more than just rankings, scroll all the way down.</p>
+          <p className="lg:hidden text-xs">{"There's"} more than just rankings, scroll all the way down.</p>
         </div>
         <a href="https://github.com/computabeast/areyoufast" target="_blank" className="text-gray-500 flex items-center space-x-2 mt-2">
           <FaGithub className="text-gray-500" />
