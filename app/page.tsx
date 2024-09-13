@@ -4,7 +4,7 @@ import ledger from "./ledger.json";
 import racerProfiles from "./racerprofiles.json";
 import raceData from "./raceData.json";
 import { RacerCard } from "./components/RacerCard";
-import { FaTrophy, FaMedal, FaCalendarAlt, FaToilet} from "react-icons/fa";
+import { FaTrophy, FaMedal, FaCalendarAlt, FaToilet, FaGithub} from "react-icons/fa";
 import { Image } from "@nextui-org/react";
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
@@ -42,9 +42,21 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20 lg:px-40 font-[family-name:var(--font-geist-sans)]">
-      <h1 className="text-3xl font-bold text-left">areyoufast.io</h1>
-      <p className="text-base font-bold text-left">Who{"'"}s actually fast in SF?</p>
+    <div className="flex flex-col gap-4 p-8 pb-20 sm:p-20 lg:px-40 font-[family-name:var(--font-geist-sans)]">
+      
+      <div className="flex flex-col gap-2 lg:flex-row lg:justify-between">
+        <div className="flex flex-col">
+          <h1 className="text-3xl font-bold text-left">areyoufast.io</h1>
+          <p className="text-base font-bold text-left">Who{"'"}s actually fast in SF?</p>
+          <p className="lg:hidden text-xs">There's more than just rankings, scroll all the way down.</p>
+        </div>
+        <a href="https://github.com/computabeast/areyoufast" target="_blank" className="text-gray-500 flex items-center space-x-2 mt-2">
+          <FaGithub className="text-gray-500" />
+          <span>Contribute</span>
+        </a>
+        
+      </div>
+
       <section className="p-6 rounded-lg w-full">
         <h2 className="text-2xl font-bold mb-4">Full Rankings</h2>
         <div className="space-y-4 max-h-96 overflow-y-auto">
