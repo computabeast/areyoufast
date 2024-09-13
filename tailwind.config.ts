@@ -13,6 +13,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        cardbg: "var(--cardbg)",
+        cardfg: "var(--cardfg)",
       },
     },
   },

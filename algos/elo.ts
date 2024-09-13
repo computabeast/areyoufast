@@ -1,4 +1,4 @@
-import { RaceLedger, Racer } from "../types";
+import { RaceLedger, Racer } from "../app/types";
 
 // Everyone starts with 1000 elo
 const INITIAL_ELO = 1000;

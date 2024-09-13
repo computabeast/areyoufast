@@ -1,4 +1,4 @@
-import { calculateEloFromLedger } from '../app/algos/elo';
+import { calculateEloFromLedger } from '../algos/elo';
 
 const DECIMAL_ACCURACY = 3
 
