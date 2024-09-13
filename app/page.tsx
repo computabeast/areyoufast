@@ -4,10 +4,9 @@ import ledger from "./ledger.json";
 import racerProfiles from "./racerprofiles.json";
 import raceData from "./raceData.json";
 import { RacerCard } from "./components/RacerCard";
-import { FaTrophy, FaMedal, FaCalendarAlt, FaToilet, FaGithub} from "react-icons/fa";
+import { FaTrophy, FaMedal, FaCalendarAlt, FaToilet} from "react-icons/fa";
 import { Image } from "@nextui-org/react";
 import 'katex/dist/katex.min.css';
-import Latex from 'react-latex-next';
 
 import Header from "./components/Header";
 
