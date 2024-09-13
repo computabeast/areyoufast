@@ -46,7 +46,7 @@ export default function Home() {
       
       <div className="flex flex-col gap-2 lg:flex-row lg:justify-between">
         <div className="flex flex-col">
-          <h1 className="text-3xl font-bold text-left">areyoufast.io</h1>
+          <h1 className="text-3xl font-bold text-left">Are you fast?</h1>
           <p className="text-base font-bold text-left">Who{"'"}s actually fast in SF?</p>
           <p className="lg:hidden text-xs">{"There's"} more than just rankings, scroll all the way down.</p>
         </div>

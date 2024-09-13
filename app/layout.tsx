@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AreYouFast.io",
+  title: "Are you fast?",
   description: "See how fast you are compared to others.",
 };
 
