@@ -150,7 +150,7 @@ export default function Home() {
           <Latex>{'$\\Delta R_A = K \\times \\frac{1}{n-1} \\sum_{i=1}^{n-1} (S_{A,i} - E_{A,i})$'}</Latex>
           <p className="mt-2">Where:</p>
           <ul className="list-disc list-inside ml-4">
-            <li><Latex>{'$K$ is the adjustment factor (e.g., 30 or 50)'}</Latex></li>
+            <li><Latex>{'$K$ is the adjustment factor (our adjustment factor is 32)'}</Latex></li>
             <li><Latex>{'$n$ is the total number of participants'}</Latex></li>
             <li><Latex>{'$S_{A,i}$ is the actual score for Racer A against Racer $i$'}</Latex></li>
             <li><Latex>{'$E_{A,i}$ is the expected score between Racer A and Racer $i$'}</Latex></li>
