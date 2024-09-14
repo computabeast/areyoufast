@@ -46,9 +46,9 @@ export default function Home() {
     <div className="flex flex-col gap-4 p-8 pb-20 sm:p-20 lg:px-52 font-[family-name:var(--font-geist-sans)]">
       <Header />
 
-      <section className="p-6 rounded-lg w-full">
-        <h2 className="text-2xl font-bold mb-4">Full Rankings</h2>
-        <div className="space-y-4 max-h-96 overflow-y-auto">
+      <section className="p-2 sm:p-6 rounded-lg w-full">
+        <h2 className="text-2xl font-bold mb-4">Rankings</h2>
+        <div className="space-y-4 sm:max-h-96 overflow-y-auto">
           {sortedRacers.map((racer, index) => {
             const profile = racerProfiles.find(p => p.id === racer.id);
             return (
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="p-6 rounded-lg w-full">
+      <section className="p-2 sm:p-6 rounded-lg w-full">
         <h2 className="text-2xl font-bold mb-4">Most Recent Race</h2>
         <p className="flex items-center">
           <FaCalendarAlt className="mr-2" />
@@ -97,7 +97,7 @@ export default function Home() {
         )}
       </section>
 
-      <section className="p-6 rounded-lg w-full">
+      <section className="p-2 sm:p-6 rounded-lg w-full">
         <h2 className="text-2xl font-bold mb-4">Stats</h2>
         <p>Total Races: {ledger.length}</p>
         <p>Total Racers: {racers.length}</p>
