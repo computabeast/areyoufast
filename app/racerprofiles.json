@@ -46,5 +46,13 @@
     "university": "Stanford",
     "age": 23,
     "linkedInURL": "https://x.com/theappletucker"
+  },
+  {
+    "id": "7",
+    "profilePicture": null,
+    "company": null,
+    "university": "Tufts",
+    "age": 27,
+    "linkedInURL": null
   }
 ]

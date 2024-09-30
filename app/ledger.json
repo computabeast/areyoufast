@@ -2,6 +2,7 @@
     {
       "raceId": "race1",
       "date": "2024-09-02",
+      "dateAdded": "2024-09-10",
       "results": [
         {
           "racerId": "1",
@@ -24,6 +25,7 @@
     {
       "raceId": "race2",
       "date": "2024-09-14",
+      "dateAdded": "2024-09-14",
       "results": [
         {
           "racerId": "1",
@@ -42,6 +44,7 @@
     {
       "raceId": "race3",
       "date": "2024-09-14",
+      "dateAdded": "2024-09-14",
       "results": [
         {
           "racerId": "1",
@@ -64,6 +67,7 @@
     {
       "raceId": "race4",
       "date": "2024-09-14",
+      "dateAdded": "2024-09-14",
       "results": [
         {
           "racerId": "1",
@@ -78,6 +82,7 @@
     {
       "raceId": "race5",
       "date": "2024-09-14",
+      "dateAdded": "2024-09-14",
       "results": [
         {
           "racerId": "1",
@@ -92,6 +97,7 @@
     {
       "raceId": "race6",
       "date": "2024-09-14",
+      "dateAdded": "2024-09-14",
       "results": [
         {
           "racerId": "5",
@@ -110,6 +116,7 @@
     {
       "raceId": "race7",
       "date": "2024-09-14",
+      "dateAdded": "2024-09-14",
       "results": [
         {
           "racerId": "5",
@@ -122,6 +129,52 @@
         {
           "racerId": "6",
           "position": 3
+        }
+      ]
+    },
+    {
+      "raceId": "race8",
+      "date": "2024-09-28",
+      "dateAdded": "2024-09-28s",
+      "results": [
+        {
+          "racerId": "1",
+          "position": 1
+        },
+        {
+          "racerId": "2",
+          "position": 2
+        },
+        {
+          "racerId": "7",
+          "position": 3
+        },
+        {
+          "racerId": "5",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "raceId": "race8",
+      "date": "2024-09-28",
+      "dateAdded": "2024-09-28s",
+      "results": [
+        {
+          "racerId": "1",
+          "position": 1
+        },
+        {
+          "racerId": "2",
+          "position": 3
+        },
+        {
+          "racerId": "7",
+          "position": 2
+        },
+        {
+          "racerId": "5",
+          "position": 4
         }
       ]
     }
