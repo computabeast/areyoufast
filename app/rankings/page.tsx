@@ -3,10 +3,8 @@ import { calculateEloFromLedger } from "../../algos/elo";
 import racers from "../racers.json";
 import ledger from "../ledger.json";
 import racerProfiles from "../racerprofiles.json";
-import raceData from "../raceData.json";
 import { RacerCard } from "../components/RacerCard";
-import { FaTrophy, FaMedal, FaCalendarAlt, FaToilet} from "react-icons/fa";
-import { Image } from "@nextui-org/react";
+import { FaTrophy, FaMedal} from "react-icons/fa";
 
 export default function RankingsPage() {
   const eloRatings = calculateEloFromLedger(racers, ledger);
@@ -24,8 +22,6 @@ export default function RankingsPage() {
       elo: Math.round(eloRatings[racer.id])
     }))
     .sort((a, b) => b.elo - a.elo);
-
-  const mostRecentRace = ledger[ledger.length - 1];
 
   const getRankIcon = (index: number) => {
     switch (index) {
@@ -48,7 +44,7 @@ export default function RankingsPage() {
           {sortedRacers.map((racer, index) => {
             const profile = racerProfiles.find(p => p.id === racer.id);
             return (
-              <div key={racer.id} className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full">
+              <div key={racer.id} className="flex flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full">
                 <div className="flex flex-row items-center space-x-2">
                   <div className="flex items-center justify-center space-x-2 w-full sm:w-16">
                     <span>#{index + 1}</span>

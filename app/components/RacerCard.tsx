@@ -38,7 +38,7 @@ export const RacerCard: React.FC<RacerCardProps> = ({ racer, profile }) => {
               )}
             </div>
           </div>
-          <div className="flex flex-wrap gap-1 justify-start lg:justify-end w-full lg:w-auto">
+          <div className="hidden md:flex flex-wrap gap-1 justify-start lg:justify-end w-full lg:w-auto">
             {profile.age && (
               <Chip size="sm" variant="flat" className="px-2" startContent={<FaBirthdayCake size={12} />}>
                 <span className="text-xs lg:text-sm ml-1">{profile.age}</span>

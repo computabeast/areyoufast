@@ -6,18 +6,17 @@ export default function Header() {
       <div className="flex flex-col gap-2 lg:flex-row lg:justify-between">
         <div className="flex flex-col">
           <a href="/"><h1 className="text-3xl text-left">Are you fast?</h1></a>
-          <p className="lg:hidden text-xs">{"There's"} more than just rankings, scroll all the way down.</p>
         </div>
 
         <div className="flex flex-row gap-6 items-center">
-          <div className="flex flex-row gap-4">
-            <a href="/rankings" className="hover:underline">Rankings</a>
+          <div className="flex flex-row gap-4 items-center">
+            <a href="/rankings" className="text-xs sm:text-base hover:underline">Rankings</a>
             <span>|</span>  
-            <a href="/algorithm" className="hover:underline">How scoring works</a>
+            <a href="/algorithm" className="text-xs sm:text-base hover:underline">How scoring works</a>
             <span>|</span>
             <a href="https://github.com/computabeast/areyoufast" target="_blank" className="flex items-center space-x-1">
               <FaGithub  />
-              <span>Contribute</span>
+              <span className="text-xs sm:text-base">Contribute</span>
             </a>
           </div>
         </div>
