@@ -1,3 +1,4 @@
+import React from "react";
 import { calculateEloFromLedger } from "../algos/elo";
 import racers from "./racers.json";
 import ledger from "./ledger.json";
@@ -43,13 +44,15 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-8 pb-20 sm:p-20 lg:px-52 font-[family-name:var(--font-geist-sans)]">
-      <Header />
+    <div className="flex flex-col gap-16 font-[family-name:var(--font-geist-sans)] mx-auto items-center p-10 min-h-screen">
+      <section className="w-2/3 flex flex-col gap-2 justify-between">
+        <div className="">
+          <h2 className="text-2xl">Top 5</h2>
+          <h2 className="text-sm">See <a href="/rankings" className="hover:underline">full rankings here</a></h2>
+        </div>
 
-      <section className="p-2 sm:p-6 rounded-lg w-full">
-        <h2 className="text-2xl font-bold mb-4">Rankings</h2>
-        <div className="space-y-4 sm:max-h-96 overflow-y-auto">
-          {sortedRacers.map((racer, index) => {
+        <div className="space-y-4">
+          {sortedRacers.slice(0, 5).map((racer, index) => {
             const profile = racerProfiles.find(p => p.id === racer.id);
             return (
               <div key={racer.id} className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full">
@@ -69,45 +72,47 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="p-2 sm:p-6 rounded-lg w-full">
-        <h2 className="text-2xl font-bold mb-4">Most Recent Race</h2>
-        <p className="flex items-center">
-          <FaCalendarAlt className="mr-2" />
-          {new Date(mostRecentRace.date).toLocaleDateString()}
-        </p>
-        <p className="flex items-center">
-          <FaTrophy className="mr-2 text-yellow-400" />
-          {racers.find(r => r.id === mostRecentRace.results.find(result => result.position === 1)?.racerId)?.name}
-        </p>
-        <p className="flex items-center">
-          <FaToilet className="mr-2" />
-          {racers.find(r => r.id === mostRecentRace.results.find(result => result.position === Math.max(...mostRecentRace.results.map(r => r.position)))?.racerId)?.name}
-        </p>
-        {raceData.find(race => race.raceId === mostRecentRace.raceId)?.imageURL && (
-          <div className="mt-4">
-            <Image 
-              src={"/images/photofinish.jpg"} 
-              alt="Most recent race" 
-              className="w-full h-auto rounded-lg"
-              width={500}
-              height={300}
-              fallbackSrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
-            />
-          </div>
-        )}
-      </section>
+      <section className="w-2/3 flex flex-col gap-10">
+        <div>
+          <h2 className="text-2xl mb-4">Most Recent Race</h2>
+          <p className="flex items-center">
+            <FaCalendarAlt className="mr-2" />
+            {new Date(mostRecentRace.date).toLocaleDateString()}
+          </p>
+          <p className="flex items-center">
+            <FaTrophy className="mr-2 text-yellow-400" />
+            {racers.find(r => r.id === mostRecentRace.results.find(result => result.position === 1)?.racerId)?.name}
+          </p>
+          <p className="flex items-center">
+            <FaToilet className="mr-2" />
+            {racers.find(r => r.id === mostRecentRace.results.find(result => result.position === Math.max(...mostRecentRace.results.map(r => r.position)))?.racerId)?.name}
+          </p>
+          {raceData.find(race => race.raceId === mostRecentRace.raceId)?.imageURL && (
+            <div className="mt-4">
+              <Image 
+                src={"/images/photofinish.jpg"} 
+                alt="Most recent race" 
+                className="w-full h-auto rounded-lg"
+                width={500}
+                height={300}
+                fallbackSrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
+              />
+            </div>
+          )}
+        </div>
 
-      <section className="p-2 sm:p-6 rounded-lg w-full">
-        <h2 className="text-2xl font-bold mb-4">Stats</h2>
-        <p>Total Races: {ledger.length}</p>
-        <p>Total Racers: {racers.length}</p>
-        <p>Average Elo: {Math.round(sortedRacers.reduce((sum, racer) => sum + racer.elo, 0) / racers.length)}</p>
-      </section>
+        <div>
+          <h2 className="text-2xl mb-4">Stats</h2>
+          <p>Total Races: {ledger.length}</p>
+          <p>Total Racers: {racers.length}</p>
+          <p>Average Elo: {Math.round(sortedRacers.reduce((sum, racer) => sum + racer.elo, 0) / racers.length)}</p>
+        </div>
 
-      <div className="mt-4 p-6 bg-cardbg rounded-lg">
-        <h2 className="text-2xl font-bold mb-4 text-cardfg">Why was this created?</h2>
-        <p className="text-cardfg">People severely overestimate how fast they are. They also overestimate their competitiveness.</p>
-      </div>
+        <div className="">
+          <h2 className="text-2xl mb-4 text-cardfg">Why was this created?</h2>
+          <p className="text-cardfg">People severely overestimate how fast they are. They also overestimate their competitiveness.</p>
+        </div>
+      </section>
     </div>
   );
 }

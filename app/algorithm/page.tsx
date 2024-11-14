@@ -1,13 +1,10 @@
-import Header from "../components/Header";
 import Latex from 'react-latex-next';
 import 'katex/dist/katex.min.css';
 
 export default function AlgorithmPage() {
   return (
-    <div className="flex flex-col gap-4 p-8 pb-20 sm:p-20 lg:px-40 font-[family-name:var(--font-geist-sans)]">
-      <Header />
-
-      <footer className="mt-8 p-6 bg-cardbg rounded-lg">
+    <div className="p-5 pb-20 sm:p-5 lg:px-40 font-[family-name:var(--font-geist-sans)]">
+      <footer className="p-6 rounded-lg">
         <h2 className="text-2xl font-bold mb-4 text-cardfg">About Our Elo Ranking System</h2>
         <p className="mb-4 text-cardfg">
           We use the Elo rating system to rank racers based on their performance in races, similar to the system used in chess.
