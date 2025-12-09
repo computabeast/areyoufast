@@ -54,7 +54,7 @@ export default function Home() {
               <p className="font-semibold mb-2">Proposed events</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
                 <div>
-                  <p className="font-medium mb-1">Men's and Women's</p>
+                  <p className="font-medium mb-1">{"Men's and Women's"}</p>
                   <p>100, 400, 1600, 110m Hurdles, Long jump, High jump, Shot put, Discus, Octathalon</p>
                 </div>
                 <div>
