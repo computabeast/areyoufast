@@ -44,7 +44,29 @@ export default function Home() {
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)] p-4 md:p-8 lg:p-10 min-h-screen flex justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
+      <div className="max-w-4xl w-full space-y-6">
+        <FadeIn delay={0}>
+          <div className="border border-stone-300 rounded-lg p-6 bg-white">
+            <p className="mb-4">
+              The Silicon Games inaugural charity track meet is in the works for Summer 2026 in San Francisco, CA. Check back for updates.
+            </p>
+            <div>
+              <p className="font-semibold mb-2">Proposed events</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                <div>
+                  <p className="font-medium mb-1">Men's and Women's</p>
+                  <p>100, 400, 1600, 110m Hurdles, Long jump, High jump, Shot put, Discus, Octathalon</p>
+                </div>
+                <div>
+                  <p className="font-medium mb-1">Mixed</p>
+                  <p>4x100, 4x400, Distance medley</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FadeIn delay={0.1} className="w-full flex flex-col gap-2">
           <h2 className="font-bold">Rankings</h2>
           <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
@@ -97,6 +119,7 @@ export default function Home() {
               <RunningSprite size={48} />
             </div>
           </FadeIn>
+        </div>
         </div>
       </div>
     </div>
