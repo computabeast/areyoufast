@@ -4,10 +4,10 @@ import racers from "./racers.json";
 import ledger from "./ledger.json";
 import racerProfiles from "./racerprofiles.json";
 import { RacerCard } from "./components/RacerCard";
-import RunningSprite from "./components/RunningSprite";
 import FadeIn from "./components/FadeIn";
 import RecentRaces from "./components/RecentRaces";
 import { FaTrophy, FaMedal, FaFlagCheckered, FaUsers, FaChartLine } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Tooltip } from "@nextui-org/react";
 
 export default function Home() {
@@ -48,7 +48,11 @@ export default function Home() {
         <FadeIn delay={0}>
           <div className="border border-stone-300 rounded-lg p-6 bg-white">
             <p className="mb-4">
-              The Silicon Games inaugural charity track meet is in the works for Summer 2026 in San Francisco, CA. Check back for updates.
+              The Silicon Games inaugural charity track meet is in the works for Summer 2026 in San Francisco, CA.{" "}
+              <a href="https://x.com/thesilicongames" target="_blank" className="inline-flex items-center gap-1">
+                <span className="underline">Follow us</span> on <FaXTwitter size={12} />
+              </a>{" "}
+              for updates.
             </p>
             <div>
               <p className="font-semibold mb-2">Proposed events</p>
@@ -116,7 +120,6 @@ export default function Home() {
                 </Tooltip>
                 {Math.round(sortedRacers.reduce((sum, racer) => sum + racer.elo, 0) / racers.length)}
               </p>
-              <RunningSprite size={48} />
             </div>
           </FadeIn>
         </div>

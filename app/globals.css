@@ -44,19 +44,3 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #d4d4d4 transparent;
 }
-
-/* Running sprite animation - 3x2 grid */
-.runner {
-  --frame-size: 64px;
-  animation: run-cycle 0.5s steps(1) infinite;
-}
-
-@keyframes run-cycle {
-  0% { background-position: 0 0; }
-  16.66% { background-position: calc(var(--frame-size) * -1) 0; }
-  33.33% { background-position: calc(var(--frame-size) * -2) 0; }
-  50% { background-position: 0 calc(var(--frame-size) * -1); }
-  66.66% { background-position: calc(var(--frame-size) * -1) calc(var(--frame-size) * -1); }
-  83.33% { background-position: calc(var(--frame-size) * -2) calc(var(--frame-size) * -1); }
-  100% { background-position: 0 0; }
-}
