@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface LoadingScreenProps {
@@ -13,7 +13,6 @@ const LOADING_SHOWN_KEY = "silicon-games-loading-shown";
 
 export default function LoadingScreen({ children, minDuration = 3000 }: LoadingScreenProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
   const [shouldShowLoading, setShouldShowLoading] = useState(true);
   const [minTimeElapsed, setMinTimeElapsed] = useState(false);
   const [contentReady, setContentReady] = useState(false);
@@ -31,12 +30,10 @@ export default function LoadingScreen({ children, minDuration = 3000 }: LoadingS
     // Scroll to top
     window.scrollTo(0, 0);
     
-    // Start progress animation
+    // Start timer for minimum duration
     const startTime = Date.now();
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
-      const newProgress = Math.min((elapsed / minDuration) * 100, 100);
-      setProgress(newProgress);
       
       if (elapsed >= minDuration) {
         clearInterval(interval);
