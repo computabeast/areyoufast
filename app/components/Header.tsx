@@ -4,18 +4,18 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between p-4 md:p-8 lg:p-10 bg-background gap-4">
+    <div className="flex flex-row items-center justify-between p-4 md:p-8 lg:p-10 bg-background gap-4">
       <a href="/">
         <Image 
-          src="/images/silicongameslogo.jpg" 
+          src="/images/sgtrio3.png" 
           alt="The Silicon Games" 
-          width={60} 
-          height={60}
-          className="rounded-full"
+          width={100} 
+          height={50}
+          style={{ imageRendering: "pixelated" }}
         />
       </a>
 
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center text-xs sm:text-sm">
+      <div className="flex flex-col items-end sm:flex-row gap-1 sm:gap-4 sm:items-center text-xs sm:text-sm">
         <a href="https://x.com/thesilicongames" target="_blank" className="flex items-center space-x-1 hover:underline">
           <FaXTwitter />
           <span>@thesilicongames</span>
