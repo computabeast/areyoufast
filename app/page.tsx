@@ -6,7 +6,7 @@ import racerProfiles from "./racerprofiles.json";
 import { RacerCard } from "./components/RacerCard";
 import FadeIn from "./components/FadeIn";
 import RecentRaces from "./components/RecentRaces";
-import { FaTrophy, FaMedal, FaFlagCheckered, FaUsers, FaChartLine } from "react-icons/fa";
+import { FaTrophy, FaMedal, FaFlagCheckered, FaUsers, FaChartLine, FaQuestionCircle } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Tooltip } from "@nextui-org/react";
 
@@ -48,7 +48,7 @@ export default function Home() {
         <FadeIn delay={0}>
           <div className="border border-stone-300 rounded-lg p-6 bg-white">
             <p className="mb-4">
-              The Silicon Games inaugural charity track meet is in the works for Summer 2026 in San Francisco, CA.{" "}
+              {"The Silicon Games'"} inaugural charity track meet is in the works for Summer 2026 in San Francisco, CA.{" "}
               <a href="https://x.com/thesilicongames" target="_blank" className="inline-flex items-center gap-1">
                 <span className="underline">Follow us</span> on <FaXTwitter size={12} />
               </a>{" "}
@@ -72,7 +72,14 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FadeIn delay={0.1} className="w-full flex flex-col gap-2">
-          <h2 className="font-bold">Rankings</h2>
+          <h2 className="font-bold flex items-center gap-2">
+            Head to Head Leaderboard
+            <Tooltip content="For now, this is an agreed upon race across an arbitrary distrance.">
+              <span className="cursor-help">
+                <FaQuestionCircle size={14} className="text-stone-400" />
+              </span>
+            </Tooltip>
+          </h2>
           <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
             {sortedRacers.map((racer, index) => {
               const profile = racerProfiles.find(p => p.id === racer.id);
