@@ -70,12 +70,12 @@ export default function Home() {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FadeIn delay={0.1} className="w-full flex flex-col gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 mt-8 md:mt-0">
+        <FadeIn delay={0.1} className="w-full flex flex-col gap-2 border border-stone-300 rounded-lg p-6 bg-white md:border-0 md:rounded-none md:p-0 md:bg-transparent">
           <h2 className="font-bold flex items-center gap-2">
             Head to Head Leaderboard
             <Tooltip content="For now, this is an agreed upon race across an arbitrary distrance.">
-              <span className="cursor-help">
+              <span className="cursor-help hidden md:inline">
                 <FaQuestionCircle size={14} className="text-stone-400" />
               </span>
             </Tooltip>
@@ -101,7 +101,7 @@ export default function Home() {
           </div>
         </FadeIn>
 
-        <div className="w-full space-y-8">
+        <div className="w-full space-y-8 border border-stone-300 rounded-lg p-6 bg-white md:border-0 md:rounded-none md:p-0 md:bg-transparent">
           <FadeIn delay={0.2}>
             <RecentRaces races={recentRaces} racers={racers} initialCount={2} />
           </FadeIn>
