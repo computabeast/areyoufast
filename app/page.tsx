@@ -46,7 +46,7 @@ export default function Home() {
     <div className="font-[family-name:var(--font-geist-sans)] p-4 md:p-8 lg:p-10 min-h-screen flex justify-center">
       <div className="max-w-4xl w-full space-y-6">
         <FadeIn delay={0}>
-          <div className="border border-stone-300 rounded-lg p-6 bg-white">
+          <div className="border border-stone-300 rounded-lg p-6 bg-gradient-to-r from-blue-100/80 via-yellow-50/70 to-red-100/80">
             <p className="mb-4">
               {"The Silicon Games'"} inaugural charity track meet is in the works for Summer 2026 in San Francisco, CA.{" "}
               <a href="https://x.com/thesilicongames" target="_blank" className="inline-flex items-center gap-1">
@@ -62,8 +62,8 @@ export default function Home() {
                   <p>100, 400, 1600, 110m Hurdles, Long jump, High jump, Shot put, Discus, Octathalon</p>
                 </div>
                 <div>
-                  <p className="font-medium mb-1">Mixed</p>
-                  <p>4x100, 4x400, Distance medley</p>
+                  <p className="font-medium mb-1">Mixed Relays</p>
+                  <p>4x100, 4x400, Distance medley relay {"(1200, 400, 800, 400)"}</p>
                 </div>
               </div>
             </div>
