@@ -6,7 +6,7 @@ import racerProfiles from "./racerprofiles.json";
 import { RacerCard } from "./components/RacerCard";
 import FadeIn from "./components/FadeIn";
 import RecentRaces from "./components/RecentRaces";
-import { FaTrophy, FaMedal, FaFlagCheckered, FaUsers, FaChartLine, FaQuestionCircle } from "react-icons/fa";
+import { FaTrophy, FaMedal, FaFlagCheckered, FaUsers, FaChartLine, FaQuestionCircle, FaToilet } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Tooltip } from "@nextui-org/react";
 
@@ -28,6 +28,31 @@ export default function Home() {
     .sort((a, b) => b.elo - a.elo);
 
   const recentRaces = [...ledger].reverse().slice(0, 5);
+
+  // Calculate finish stats for all racers
+  const finishStats: Record<string, { first: number; second: number; third: number; fourthPlus: number; last: number }> = {};
+  
+  racers.forEach(racer => {
+    let first = 0;
+    let second = 0;
+    let third = 0;
+    let fourthPlus = 0;
+    let last = 0;
+
+    ledger.forEach(race => {
+      const result = race.results.find(r => r.racerId === racer.id);
+      if (result) {
+        const lastPosition = Math.max(...race.results.map(r => r.position));
+        if (result.position === 1) first++;
+        else if (result.position === 2) second++;
+        else if (result.position === 3) third++;
+        else if (result.position === lastPosition) last++;
+        else fourthPlus++;
+      }
+    });
+
+    finishStats[racer.id] = { first, second, third, fourthPlus, last };
+  });
 
   const getRankIcon = (index: number) => {
     switch (index) {
@@ -74,7 +99,7 @@ export default function Home() {
         <FadeIn delay={0.1} className="w-full flex flex-col gap-2 border border-stone-300 rounded-lg p-6 bg-white md:border-0 md:rounded-none md:p-0 md:bg-transparent">
           <h2 className="font-bold flex items-center gap-2">
             Head to Head Leaderboard
-            <Tooltip content="For now, this is an agreed upon race across an arbitrary distrance.">
+            <Tooltip placement="left" content="For now, this is an agreed upon race across an arbitrary distrance.">
               <span className="cursor-help hidden md:inline">
                 <FaQuestionCircle size={14} className="text-stone-400" />
               </span>
@@ -90,7 +115,35 @@ export default function Home() {
                       <span>#{index + 1}</span>
                       {getRankIcon(index)}
                     </div>
-                    <span className="font-mono text-sm text-stone-500">{racer.elo}</span>
+                    <Tooltip 
+                      placement="left"
+                      content={
+                        <div className="text-xs space-y-1">
+                          <div className="flex items-center gap-2">
+                            <FaTrophy className="text-yellow-400" size={12} />
+                            <span>{finishStats[racer.id]?.first || 0}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <FaMedal className="text-stone-400" size={12} />
+                            <span>{finishStats[racer.id]?.second || 0}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <FaMedal className="text-amber-600" size={12} />
+                            <span>{finishStats[racer.id]?.third || 0}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-stone-500">—</span>
+                            <span>{finishStats[racer.id]?.fourthPlus || 0}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <FaToilet size={12} />
+                            <span>{finishStats[racer.id]?.last || 0}</span>
+                          </div>
+                        </div>
+                      }
+                    >
+                      <span className="font-mono text-sm text-stone-500 cursor-pointer">{racer.elo}</span>
+                    </Tooltip>
                   </div>
                   <div className="flex-grow">
                     <RacerCard racer={racer} profile={profile || {profilePicture: null, company: null, university: null, age: null, linkedInURL: null}} />
@@ -98,6 +151,30 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+          <div className="mt-4 text-xs text-stone-500">
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex items-center gap-1">
+                <FaTrophy className="text-yellow-400" size={12} />
+                <span>1st</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <FaMedal className="text-stone-400" size={12} />
+                <span>2nd</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <FaMedal className="text-amber-600" size={12} />
+                <span>3rd</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-stone-500">—</span>
+                <span>4th+</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <FaToilet size={12} />
+                <span>Last</span>
+              </div>
+            </div>
           </div>
         </FadeIn>
 
@@ -110,19 +187,19 @@ export default function Home() {
             <h2 className="font-bold mb-4">Stats</h2>
             <div className="flex flex-row gap-6 items-center">
               <p className="flex items-center gap-2">
-                <Tooltip content="Total number of races completed">
+                <Tooltip placement="left" content="Total number of races completed">
                   <span className="cursor-pointer"><FaFlagCheckered /></span>
                 </Tooltip>
                 {ledger.length}
               </p>
               <p className="flex items-center gap-2">
-                <Tooltip content="Total number of registered racers">
+                <Tooltip placement="left" content="Total number of registered racers">
                   <span className="cursor-pointer"><FaUsers /></span>
                 </Tooltip>
                 {racers.length}
               </p>
               <p className="flex items-center gap-2">
-                <Tooltip content="Average Elo rating across all racers">
+                <Tooltip placement="left" content="Average Elo rating across all racers">
                   <span className="cursor-pointer"><FaChartLine /></span>
                 </Tooltip>
                 {Math.round(sortedRacers.reduce((sum, racer) => sum + racer.elo, 0) / racers.length)}
