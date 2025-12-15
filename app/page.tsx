@@ -1,5 +1,5 @@
 import React from "react";
-import { calculateEloFromLedger } from "../algos/elo";
+import { calculateEloFromLedger, calculateEloChangeForRace } from "../algos/elo";
 import racers from "./racers.json";
 import ledger from "./ledger.json";
 import racerProfiles from "./racerprofiles.json";
@@ -12,6 +12,13 @@ import { Tooltip } from "@nextui-org/react";
 
 export default function Home() {
   const eloRatings = calculateEloFromLedger(racers, ledger);
+  
+  // Calculate elo changes per race using index-based method
+  // Use index as key to handle duplicate raceIds
+  const eloChanges: { [raceIndex: number]: { [racerId: string]: number } } = {};
+  ledger.forEach((_, index) => {
+    eloChanges[index] = calculateEloChangeForRace(racers, ledger, index);
+  });
   
   // Check if all racers have Elo ratings
   racers.forEach(racer => {
@@ -27,10 +34,14 @@ export default function Home() {
     }))
     .sort((a, b) => b.elo - a.elo);
 
-  const recentRaces = [...ledger].reverse().slice(0, 5);
+  // Include original index for elo change lookup
+  const recentRaces = ledger
+    .map((race, index) => ({ ...race, originalIndex: index }))
+    .reverse()
+    .slice(0, 5);
 
   // Calculate finish stats for all racers
-  const finishStats: Record<string, { first: number; second: number; third: number; fourthPlus: number; last: number }> = {};
+  const finishStats: Record<string, { first: number; second: number; third: number; fourthPlus: number; last: number; totalRaces: number }> = {};
   
   racers.forEach(racer => {
     let first = 0;
@@ -38,10 +49,12 @@ export default function Home() {
     let third = 0;
     let fourthPlus = 0;
     let last = 0;
+    let totalRaces = 0;
 
     ledger.forEach(race => {
       const result = race.results.find(r => r.racerId === racer.id);
       if (result) {
+        totalRaces++;
         const lastPosition = Math.max(...race.results.map(r => r.position));
         if (result.position === 1) first++;
         else if (result.position === 2) second++;
@@ -51,7 +64,7 @@ export default function Home() {
       }
     });
 
-    finishStats[racer.id] = { first, second, third, fourthPlus, last };
+    finishStats[racer.id] = { first, second, third, fourthPlus, last, totalRaces };
   });
 
   const getRankIcon = (index: number) => {
@@ -139,6 +152,12 @@ export default function Home() {
                             <FaToilet size={12} />
                             <span>{finishStats[racer.id]?.last || 0}</span>
                           </div>
+                          <div className="border-t border-stone-300 my-1 pt-1">
+                            <div className="flex items-center gap-2">
+                              <FaFlagCheckered size={12} />
+                              <span>{finishStats[racer.id]?.totalRaces || 0}</span>
+                            </div>
+                          </div>
                         </div>
                       }
                     >
@@ -180,7 +199,7 @@ export default function Home() {
 
         <div className="w-full space-y-8 border border-stone-300 rounded-lg p-6 bg-white md:border-0 md:rounded-none md:p-0 md:bg-transparent">
           <FadeIn delay={0.2}>
-            <RecentRaces races={recentRaces} racers={racers} initialCount={2} />
+            <RecentRaces races={recentRaces} racers={racers} eloChanges={eloChanges} initialCount={2} />
           </FadeIn>
 
           <FadeIn delay={0.3}>

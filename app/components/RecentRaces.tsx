@@ -13,6 +13,7 @@ interface Race {
   raceId: string;
   date: string;
   results: RaceResult[];
+  originalIndex: number;
 }
 
 interface Racer {
@@ -20,13 +21,18 @@ interface Racer {
   name: string;
 }
 
+interface EloChanges {
+  [raceIndex: number]: { [racerId: string]: number };
+}
+
 interface RecentRacesProps {
   races: Race[];
   racers: Racer[];
+  eloChanges: EloChanges;
   initialCount?: number;
 }
 
-export default function RecentRaces({ races, racers, initialCount = 2 }: RecentRacesProps) {
+export default function RecentRaces({ races, racers, eloChanges, initialCount = 2 }: RecentRacesProps) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -66,7 +72,7 @@ export default function RecentRaces({ races, racers, initialCount = 2 }: RecentR
               </>
             ) : (
               <>
-                <span>Show all ({races.length})</span>
+                <span>Show more</span>
                 <FaChevronDown size={10} />
               </>
             )}
@@ -91,6 +97,7 @@ export default function RecentRaces({ races, racers, initialCount = 2 }: RecentR
                   const racer = racers.find(r => r.id === result.racerId);
                   const isFirst = result.position === 1;
                   const isLast = result.position === lastPosition;
+                  const eloChange = eloChanges[race.originalIndex]?.[result.racerId] || 0;
                   return (
                     <p key={result.racerId} className="flex items-center">
                       <span className="w-6 flex justify-center mr-2">
@@ -99,7 +106,10 @@ export default function RecentRaces({ races, racers, initialCount = 2 }: RecentR
                          <span className="text-stone-500">-</span>}
                       </span>
                       <span className="text-stone-500 w-4 mr-2">{result.position}.</span>
-                      {racer?.name}
+                      <span className="flex-grow">{racer?.name}</span>
+                      <span className={`text-xs font-mono ${eloChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {eloChange >= 0 ? '+' : ''}{eloChange}
+                      </span>
                     </p>
                   );
                 })}
